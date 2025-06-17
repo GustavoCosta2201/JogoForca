@@ -153,6 +153,7 @@ void jogar(const char* palavra, const char* tema) {
     char letrasUsadas[26] = {0};
     int letrasUsadasCount = 0;
 
+    // Inicializa a palavra oculta
     for (int i = 0; i < tamanho; i++)
         exibicao[i] = '_';
     exibicao[tamanho] = '\0';
@@ -165,11 +166,13 @@ void jogar(const char* palavra, const char* tema) {
         printf("Tentativas restantes: %d\n", MaxTentativas - tentativas);
         printf("Pontuacao atual: %d\n", pontos);
 
+        // Mostra a palavra até o momento
         printf("Palavra: ");
         for (int i = 0; i < tamanho; i++)
             printf("%c ", exibicao[i]);
         printf("\n");
 
+        // Mostra letras já usadas
         printf("Letras usadas: ");
         for (int i = 0; i < letrasUsadasCount; i++)
             printf("%c ", letrasUsadas[i]);
@@ -222,6 +225,7 @@ void jogar(const char* palavra, const char* tema) {
 
         letra = toupper(entrada[0]);
 
+        // Verifica se já foi usada
         int jaUsada = 0;
         for (int i = 0; i < letrasUsadasCount; i++) {
             if (letrasUsadas[i] == letra) {
@@ -239,6 +243,7 @@ void jogar(const char* palavra, const char* tema) {
             letrasUsadas[letrasUsadasCount++] = letra;
         }
 
+        // Verifica se a letra existe na palavra
         int letraEncontrada = 0;
         for (int i = 0; i < tamanho; i++) {
             if (palavra[i] == letra && exibicao[i] == '_') {
@@ -307,6 +312,7 @@ void LimparTela() {
 #endif
 }
 
+// Função principal
 int main() {
     MenuExibicao();
     return 0;
